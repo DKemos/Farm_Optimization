@@ -1,0 +1,78 @@
+model Question_3
+uses "mmxprs"; 
+
+declarations	
+x1 : mpvar ! Acres Of Soyabean
+x2 : mpvar ! Acres Of Corn
+x3 : mpvar ! Acres Of Wheat
+x4 : mpvar ! Number Of Cows Owned 
+x5 : mpvar ! Numebr Of New Cows
+x6 : mpvar ! Number Of Current Hens
+x7 : mpvar ! Number of New Hens
+x8 : mpvar ! Leftover Labor Winter/Spring
+x9 : mpvar ! Leftover Labor Summer/Fall 
+  Objective:linctr
+end-declarations
+
+Monetary1:= 70*x1 + 60*x2 + 50*x3 + 1900*x4 + 700*x5 +6.125*x6 + 3.5*x7 + 5*x8 +5.5*x9 - 20000  ! Monetary Worth With Good Weather Conditions
+Monetary2:= 15*x1 + 20*x2 + 10*x3 + 1900*x4 + 700*x5 +6.125*x6 + 3.5*x7 + 5*x8 +5.5*x9 - 20000  ! Moentary Worth With Flood
+Monetary3:= -10*x1 -15*x2 + 0*x3 + 1900*x4 + 700*x5 +6.125*x6 + 3.5*x7 + 5*x8 +5.5*x9 - 20000   ! Monetary Worth With Drought 
+x1 + x2 + x3 + 2*x4 + 2*x5 <= 640                                     ! Acres Available
+x4 + x5 <= 42                                                         ! Space For Cows
+x6 + x7 <= 5000                                                       ! Space For Hens
+x1 + 0.9*x2 + 0.6*x3 + 60*x4 +60*x5 + 0.3*x6 + 0.3*x7 + x8 = 4000     ! Average Labor Winter/Spring
+1.4*x1 + 1.2*x2 + 0.7*x3 + 60*x4 + 60*x5 + 0.3*x6 + 0.3*x7 +x9 = 4500 ! Average Labor Summer/Fall
+1500*x5 + 3*x7 <= 20000                                               ! Fund Available For Investment
+x4+x5<= x2                                                            ! Corn Acres Needed To Feed Cows
+0.05*x6 + 0.05*x7 <= x3                                               ! Wheat Acres Needed To Feed Hens
+x4 = 30                                                               ! Number Of Cows Owned
+x6 = 2000                                                             ! Number Of Hens Owned
+
+x1>=0
+x2>=0
+x3>=0
+x4>=0
+x5>=0
+x6>=0
+x7>=0
+x8>=0
+x9>=0
+
+
+writeln("The maximised monetary worth for the Good weather scenario is:")
+maximise(Monetary1)
+writeln (getobjval)
+writeln("The optimal plan under this scenario is:")
+writeln	("Acres Of Soybean: ",(getsol(x1)))
+writeln	("Acres Of Corn: ",(getsol(x2)))
+writeln	("Acres Of Wheat: ",(getsol(x3)))
+writeln	("New Cows: ",(getsol(x5)))
+writeln ("New Hens: ",(getsol(x7)))
+writeln ("Labor Leftover Winter/Spring: ",getsol(x8))
+writeln ("Labor Leftover Summer Fall: ",getsol(x9))
+writeln ("////////////////////////////////////////////////////////////////")
+writeln("The maximised monetary worth for the Flood weather scenario is:")
+maximise(Monetary2)
+writeln (getobjval)
+writeln("The optimal plan under this scenario is:")
+writeln	("Acres Of Soybean: ",(getsol(x1)))
+writeln	("Acres Of Corn: ",(getsol(x2)))
+writeln	("Acres Of Wheat: ",(getsol(x3)))
+writeln	("New Cows: ",(getsol(x5)))
+writeln ("New Hens: ",(getsol(x7)))
+writeln ("Labor Leftover Winter/Spring: ",getsol(x8))
+writeln ("Labor Leftover Summer Fall: ",getsol(x9))
+writeln ("////////////////////////////////////////////////////////////////")
+writeln("The maximised monetary worth for the Drought weather scenario is:")
+maximise(Monetary3)
+writeln (getobjval)
+writeln("The optimal plan under this scenario is:")
+writeln	("Acres Of Soybean: ",(getsol(x1)))
+writeln	("Acres Of Corn: ",(getsol(x2)))
+writeln	("Acres Of Wheat: ",(getsol(x3)))
+writeln	("New Cows: ",(getsol(x5)))
+writeln ("New Hens: ",(getsol(x7)))
+writeln ("Labor Leftover Winter/Spring: ",getsol(x8))
+writeln ("Labor Leftover Summer Fall: ",getsol(x9))
+
+end-model
