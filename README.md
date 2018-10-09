@@ -10,9 +10,10 @@ Currently, the family has saved £20,000, which they can invest. They currently 
 Each cow requires 2 acres of land for grazing and 10 person-hours of work per month, while producing a net annual income of £850. Hens require no significant space, 0.05 person-hours of work per month, and produce a net annual income of £4.25 each. The hen house can hold at most 5,000 hens, and the barn limits the size of the cowherd to 42. 
 For each acre planted in each of the three crops, the following table gives the number of person-hours of work that will be required during the first and second halves of the year:
 
-			Soybeans	Corn	Wheat
-Winter & Spring	1.0		0.9	0.6
-Summer & Autumn	1.4		1.2	0.7
+---------------- Soybeans	    Corn	         Wheat
+Winter & Spring	  1.0                0.9	          0.6
+Summer & Autumn	  1.4                1.2	          0.7
+
 Data is person-hours per acre planted.
 
 To provide food for the livestock, the family needs to plant at least 1 acre of corn for each cow and 0.05 acres of wheat for each hen. This will provide food for the entire year. 
@@ -20,9 +21,9 @@ To provide food for the livestock, the family needs to plant at least 1 acre of 
 The family are deciding how much acreage should be planted in each of the crops and how many cows and hens to have for the coming year. Their objective is to maximise the familys monetary worth at the end of the year (the sum of the net income from their livestock plus the net value of the crops plus what remains of the livestock fund plus the value of the livestock plus any additional earnings from neighbouring farms minus their living expenses of £40,000). 
 The weather being uncertain affects the net value per acre of the planted crops. The table below details the various effects of the weather scenarios on the net value per acre planted of each crop.
 
-		Net value per acre planted
-		Soybeans	Corn	Wheat
-Drought	-£10		-£15	£0
+-----------------Net value per acre planted
+----------------Soybeans	Corn	Wheat
+Drought	        -£10		-£15	£0
 Flood		£15		£20	£10
 Good		£70		£60	£50
 
